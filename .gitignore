@@ -1,0 +1,8 @@
+.idea
+target
+*.iml
+**/out/
+build
+/jsdraw_kotlin/gradle
+/jsdraw_kotlin/.gradle
+
