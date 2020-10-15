@@ -45,18 +45,3 @@ kotlin {
 }
 
 
-publishing {
-    repositories {
-        mavenLocal()
-    }
-
-    publications {
-        maven(MavenPublication) {
-            artifactId project.name
-            group=rootProject.group
-            version rootProject.version
-        }
-    }
-}
-
-

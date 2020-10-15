@@ -19,7 +19,10 @@ plugins {
 }
 
 
-allprojects {
+allprojects{
+    group 'i_need_help'
+    version '1.0'
+
     repositories {
         mavenLocal()
         mavenCentral()
@@ -27,32 +30,58 @@ allprojects {
         maven{ url "https://kotlin.bintray.com/kotlinx" }
     }
 
-    task listAllDependencies(type: DependencyReportTask) {}
-}
-
-
-
-version = '1.0'
-group = 'i_need_help_example'
-
-kotlin {
-    configure([targets["metadata"], jvm(), js()]) {
-        mavenPublication { targetPublication ->
-            tasks.withType(AbstractPublishToMaven)
-                    .matching { it.publication == targetPublication }
-                    .all {
+    kotlin {
+        configure([targets["metadata"], jvm(), js()]) {
+            mavenPublication { targetPublication ->
+                tasks.withType(AbstractPublishToMaven)
+                        .matching { it.publication == targetPublication }
+                        .all {
 //                    onlyIf { findProperty("isMainHost") == "true" }
-                    }
+                        }
+            }
         }
     }
-}
 
-subprojects {
-    version = '1.0'
+    task listAllDependencies(type: DependencyReportTask) {}
 
     // maven publication
     apply plugin: 'maven-publish'
+
+    publishing {
+        repositories {
+            mavenLocal()
+        }
+
+        publications {
+            maven(MavenPublication) {
+//                artifactId project.name
+                group 'i_need_help_example'
+                version '1.0'
+            }
+        }
+    }
+
 }
+
+
+//subprojects {
+//    publishing {
+//        repositories {
+//            mavenLocal()
+//        }
+//
+//        publications {
+//            maven(MavenPublication) {
+////                artifactId project.name
+//                group 'i_need_help'
+//                version '1.0'
+//            }
+//        }
+//    }
+//}
+
+
+
 
 
 
