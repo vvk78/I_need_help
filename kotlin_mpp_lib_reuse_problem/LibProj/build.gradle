@@ -20,7 +20,6 @@ plugins {
 
 
 allprojects{
-    group 'i_need_help'
     version '1.0'
 
     repositories {
