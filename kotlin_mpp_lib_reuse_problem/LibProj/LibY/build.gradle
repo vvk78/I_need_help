@@ -1,0 +1,62 @@
+plugins {
+    id 'org.jetbrains.kotlin.multiplatform'
+}
+
+kotlin {
+    jvm{}.compilations.all {
+        kotlinOptions.noReflect = false
+        kotlinOptions.noStdlib = false
+    }
+    js{
+        //produceExecutable()
+    }.compilations.all {
+        //kotlinOptions.main = "call"
+        //kotlinOptions.moduleKind = "commonjs"
+        kotlinOptions.noStdlib = "false"
+        kotlinOptions.sourceMap = "true"
+        kotlinOptions.sourceMapEmbedSources = "always"
+
+        kotlinOptions.metaInfo = true
+        kotlinOptions.outputFile = "${project.rootDir}/out/production/liby/libY.js"
+    }
+
+
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation kotlin('stdlib')
+                implementation kotlin('stdlib-common')
+            }
+        }
+
+        jvmMain {
+            dependencies {
+                implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+            }
+        }
+
+
+        jsMain() {
+            dependencies {
+                implementation 'org.jetbrains.kotlin:kotlin-stdlib-js'
+            }
+        }
+    }
+}
+
+
+publishing {
+    repositories {
+        mavenLocal()
+    }
+
+    publications {
+        maven(MavenPublication) {
+            artifactId project.name
+            group=rootProject.group
+            version rootProject.version
+        }
+    }
+}
+
+
