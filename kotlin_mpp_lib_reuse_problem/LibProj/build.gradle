@@ -20,7 +20,6 @@ plugins {
 
 
 allprojects{
-    version '1.0'
 
     repositories {
         mavenLocal()
@@ -46,18 +45,19 @@ allprojects{
     // maven publication
     apply plugin: 'maven-publish'
 
+    version '1.0'
+    group 'i_need_help_example'
+
     publishing {
         repositories {
             mavenLocal()
         }
 
-        publications {
-            maven(MavenPublication) {
-//                artifactId project.name
-                group 'i_need_help_example'
-                version '1.0'
-            }
-        }
+//        publications {
+//            maven(MavenPublication) {
+////                artifactId project.name
+//            }
+//        }
     }
 
 }

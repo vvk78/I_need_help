@@ -1,5 +1,5 @@
 package libxconsumer
 
 
-class LibXBaseClassUsageExample : LibXBaseClass("Xyz") {
+class LibXBaseClassUsageExample : libx.LibXBaseClass("Xyz") {
 }
