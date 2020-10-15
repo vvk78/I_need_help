@@ -25,6 +25,7 @@ kotlin {
         commonMain {
             dependencies {
                 implementation "i_need_help_example:LibX:1.0"
+                implementation "i_need_help_example:LibY:1.0"
                 implementation kotlin('stdlib')
                 implementation kotlin('stdlib-common')
             }

@@ -1,9 +1,5 @@
 package liby
 
-/**
- *
- * created by vkorovkin  on 15.10.2020
- */
 class Uniterator<T>(private val items : Iterator<Iterator<T>>) : Iterator<T> {
 
     constructor (itA : Iterator<T>, itB : Iterator<T>) : this (listOf<Iterator<T>>(itA, itB).iterator())
